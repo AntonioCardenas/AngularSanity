@@ -1,5 +1,9 @@
 # AngularSanity
 
+![Logo](https://cdn.sanity.io/images/81pocpw8/production/99b36485e5479f50b24dd390fbd864d226c62b99-1266x930.png?w=2000&fit=max&auto=format)
+
+
+
 ## Blog template using Sanity.io and Angular
 
 This starter is a statically generated blog that uses Angular for the frontend and Sanity to handle its content. using
