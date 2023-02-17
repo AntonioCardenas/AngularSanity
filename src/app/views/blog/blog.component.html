@@ -1,0 +1,39 @@
+
+
+<div class="w-full p-12 z-10">
+    <div class="mt-16 mb-10 flex flex-col items-center md:mb-12 md:flex-row md:justify-between"><h1
+      class="mb-4 text-4xl font-bold text-9xl text-gray-800">Blog.</h1>
+      <h4 class="mt-5 text-center text-lg md:pl-8 md:text-left BlogHeader_portableText__JCSyj"><p>Articles from  <a href="https://sanity.io/" class="hover:text-sky-500 underline" target="_blank">Sanity</a> using <a  class="hover:text-red-500 underline" href="https://angular.io" target="_blank">Angular</a></p></h4>
+    </div>
+  <div class="p-5 mx-auto bg-black text-gray-100 rounded-lg">
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-4 sm:grid-cols-2">
+      <div *ngFor="let post of posts">
+        <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 bg-gray-500 rounded-lg"  style.background-image="url('{{ imageUrl(post.coverImage)}}')" [routerLink]="['/post/'+post.slug]">
+          <div class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b via-transparent from-gray-500 to-gray-900  rounded-lg"></div>
+          <div class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
+            <a rel="noopener noreferrer" href="#" class="px-3 py-2 text-xs font-semibold tracking-wider uppercase text-gray-100 tracking-wider uppercase text-gray-100 bg-black">{{ post.category }}</a>
+            <div class="flex flex-col justify-start text-center text-gray-100">
+              <span class="text-3xl font-semibold leading-none tracking-wide">{{post.date | date: 'd'}}</span>
+              <span class="leading-none uppercase">{{post.date | date: 'MMM'}}</span>
+            </div>
+          </div>
+          <h2 class="z-10 p-5">
+            <a rel="noopener noreferrer" href="#" class="font-medium text-md hover:underline text-gray-100"> {{ post.title }}</a>
+            <p class="font-light text-gray-400 text-gray-300 text-md">
+              {{ post.excerpt }}
+            </p>
+            <div class="flex text-sm">
+            <p>By: </p>
+              <p class="text-gray-800 text-white">
+                 {{ post.author.name }}
+              </p>
+            </div>
+          </h2>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+

@@ -1,0 +1,15 @@
+.effect{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -100;
+  display: block;
+  background-image: url(../assets/bg.gif);
+  background-position: 50% 50%;
+  background-size: 300px;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  opacity: .08
+}

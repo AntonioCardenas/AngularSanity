@@ -1,0 +1,35 @@
+<div class="mx-auto">
+    <div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative" style="height: 24em;">
+      <div class="absolute left-0 bottom-0 w-full h-full rounded-lg"
+           style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
+      <img src="{{ imageUrl(postData?.coverImage)}}" class="absolute left-0 top-0 w-full h-full z-0 bg-contain rounded-lg" />
+    </div>
+
+
+  <div class="p-4 grid grid-cols-1">
+<div >
+  <button type="button" class="px-8 py-3 font-semibold rounded-full bg-black text-white" [routerLink]="['/']">Back to Articles</button>
+</div>
+
+    <h2 class="text-8xl font-semibold text-center ">
+        {{ postData?.title}}
+      </h2>
+
+      <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+        <div [innerHTML]="postDataContent ">
+        </div>
+      </div>
+    </div>
+    <div class="px-4 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 border-t border-gray-700">
+      <div class="mb-10 sm:text-center">
+        <a href="/" aria-label="Author" class="inline-block mb-1">
+          <img alt="avatar" src="{{ imageUrl(postData?.author.picture)}}" class="object-cover w-14 h-14 rounded-full shadow-sm border-2 border-black" />
+        </a>
+        <div>
+          <a href="/" aria-label="Author" class="font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700">{{ postData?.author.name}}</a>
+          <p class="text-sm font-medium leading-4 text-gray-600">Author</p>
+        </div>
+      </div>
+
+    </div>
+</div>
