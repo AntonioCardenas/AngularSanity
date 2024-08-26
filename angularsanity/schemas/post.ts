@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import { format, parseISO } from 'date-fns'
+import {format, parseISO} from 'date-fns'
 
 export default defineType({
   name: 'post',
@@ -25,7 +25,7 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'excerpt',
@@ -66,13 +66,13 @@ export default defineType({
       date: 'date',
       media: 'coverImage',
     },
-    prepare({ title, media, author, date }) {
+    prepare({title, media, author, date}) {
       const subtitles = [
         author && `by ${author}`,
         date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
       ].filter(Boolean)
 
-      return { title, media, subtitle: subtitles.join(' ') }
+      return {title, media, subtitle: subtitles.join(' ')}
     },
   },
 })

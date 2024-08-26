@@ -2,8 +2,6 @@
 
 ![Logo](https://cdn.sanity.io/images/81pocpw8/production/99b36485e5479f50b24dd390fbd864d226c62b99-1266x930.png?w=2000&fit=max&auto=format)
 
-
-
 ## Blog template using Sanity.io and Angular
 
 This starter is a statically generated blog that uses Angular for the frontend and Sanity to handle its content. Using
@@ -13,9 +11,9 @@ you can easily edit and adapt this template, just changing or adding fields to t
 
 ### To populate the blog with data just go to angularsanity
 
-````
+```
 cd angularsanity
-````
+```
 
 Install the node modules :
 
@@ -35,37 +33,37 @@ In angularsanity/sanity.config.ts
 
 change the '' with your projectid key
 
-````
+```
  projectId: '', to projectId: 'YOURKEY'
-````
+```
 
 the same in angularsanity/sanity.cli.ts
 
-````
+```
  projectId: '', to projectId: 'YOURKEY'
-````
+```
 
 the same in `environments/environment.ts`
 
-````
+```
  SANITY_PROJECT_ID:"YOURAPIKEY",
  SANITY_DATASET:"production",
- SANITY_API_VERSION:"2022-11-15", to mos recent date
+ SANITY_API_VERSION:"2022-11-15", to most recent date
  SANITY_PROJECT_TITLE:"YOURPROJECTNAME",
-````
+```
 
 ### Troubleshooting
 
 To solve Buffer or Node.js Classes dependencies
 run
 
-``` shell
+```shell
 npm install --save @types/node
 ```
 
 and edit the tsconfig.json
 
-``` json
+```json
 "compilerOptions": {
    ...
    "types": ["node"],
@@ -76,7 +74,7 @@ and edit the tsconfig.json
 
 To stop the Angular CLI warnings about commonjs
 
-``` json
+```json
 // angular.json
 
 "build": {
@@ -93,33 +91,31 @@ Change the API version : [https://www.sanity.io/docs/api-versioning](https://www
 
 Errors related to imports just add
 
-``` json
+```json
 //tsconfig.json
    "allowSyntheticDefaultImports":true,
 ```
 
 To draw HTML properly
 
-``` javascript
-import {toHTML} from '@portabletext/to-html'
-   this.yourVar = toHTML(res.content);
-
+```javascript
+import { toHTML } from "@portabletext/to-html";
+this.yourVar = toHTML(res.content);
 ```
 
-``` html
-<div [innerHTML]="yourVar">
-</div>
+```html
+<div [innerHTML]="yourVar"></div>
 ```
-
 
 Run the angular project
+
 ```shell
 ng serve
 ```
 
-
 ### Non Angular Library's used for this template
-```json          
+
+```json
    "sanity",
    "@portabletext/to-html",
    "@sanity/client",
@@ -130,7 +126,6 @@ ng serve
    "tailwindcss",
 ```
 
-
 ### Deploy to production
 
 You can use
@@ -140,18 +135,19 @@ ng deploy
 ```
 
 and select if you want :
-* Amazon S3
-* Firebase
-* Netlify
-* Npm
-* Github Pages
+
+- Amazon S3
+- Firebase
+- Netlify
+- Npm
+- Github Pages
 
 also you can use the command
 
-```` shell
+```shell
 npm run deploy
-````
+```
 
-this make an optimize bundle and deploy to firebase  you can change it just removing the
-```&& firebase deploy ```
+this make an optimize bundle and deploy to firebase you can change it just removing the
+`&& firebase deploy `
 and replacing with the command to another hosting
