@@ -18,7 +18,16 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
-              "@sanity/client"
+              "@sanity/client",
+              "@sanity/image-url",
+              "event-source-polyfill",
+              "react",
+              "react-dom",
+              "styled-components",
+              "framer-motion",
+              "lodash",
+              "@sanity/icons",
+              "@sanity/ui"
             ],
             "outputPath": "dist/angular-sanity",
             "index": "src/index.html",

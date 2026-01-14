@@ -1,16 +1,39 @@
 {
   "name": "angular-sanity",
-  "version": "0.1.1",
+  "version": "1.0.2",
   "author": {
-    "name": "@AntonioCardenas"
+    "name": "Antonio Cardenas",
+    "email": "me@yeou.dev",
+    "url": "https://www.yeou.dev"
   },
+  "description": "A high-performance, statically generated blog template built with the latest Angular 21 and Sanity.io. It leverages modern Angular features like Vite (Application Builder), Standalone Components, and the new Built-in Control Flow syntax.",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "sanity",
+    "blog",
+    "static",
+    "generated",
+    "template",
+    "high-performance",
+    "vite",
+    "standalone",
+    "components",
+    "built-in",
+    "control-flow",
+    "angular-21",
+    "sanity-io"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --build-optimizer --optimization && firebase deploy",
+    "deploy": "ng build && firebase deploy",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "studio:dev": "npm run dev --prefix angularsanity",
+    "studio:build": "npm run build --prefix angularsanity",
+    "studio:deploy": "npm run deploy --prefix angularsanity"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +60,8 @@
     "@angular/cli": "~21.0.0",
     "@angular/compiler-cli": "^21.0.0",
     "@types/jasmine": "~4.3.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.13",
     "groq": "^3.4.0",
     "jasmine-core": "~4.5.0",

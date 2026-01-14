@@ -19,7 +19,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "useDefineForClassFields": false,
-    "types": ["node"],
+    "skipLibCheck": true,
+    "types": ["node", "react", "react-dom"],
     "typeRoots": ["node_modules/@types"],
     "lib": [
       "ES2022",

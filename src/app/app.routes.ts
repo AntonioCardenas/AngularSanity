@@ -12,5 +12,10 @@ export const routes: Routes = [
     loadComponent: () => import('./views/post/post.component').then(m => m.PostComponent),
     pathMatch: 'full',
     title: "Post | Sanity"
+  },
+  {
+    path: 'studio',
+    loadComponent: () => import('./views/studio/studio.component').then(m => m.StudioComponent),
+    title: "Studio | Sanity"
   }
 ];

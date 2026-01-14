@@ -47,20 +47,49 @@ Your app will be available at `http://localhost:4200/`.
 
 ---
 
-### Content Management (Sanity Studio)
-Go to the `angularsanity` directory to manage your content:
+## Content Management
+
+This project offers two ways to manage your content:
+
+### 1. Integrated Studio (Angular Route)
+The Sanity Studio is integrated directly into the Angular application. You can access it without leaving the app:
+- **Local**: [http://localhost:4200/studio](http://localhost:4200/studio)
+- **Production**: `https://your-domain.web.app/studio`
+
+This is powered by the `StudioComponent` which embeds the studio using `renderStudio`.
+
+### 2. Standard Studio (Subdirectory)
+For a full-screen experience or advanced configurations, you can still use the standard studio in the `angularsanity` directory:
+
+**From Project Root:**
+```bash
+npm run studio:dev      # Start local studio server
+npm run studio:build    # Build studio for production
+npm run studio:deploy   # Deploy studio to Sanity Cloud
+```
+
+**Manual:**
 ```bash
 cd angularsanity
-npm install
-npm run dev
+npm install && npm run dev
 ```
 
 ### Build & Deploy
-To create a production-ready bundle:
+
+This project is configured for **Firebase Hosting** and **Sanity Cloud**.
+
+#### 1. Build & Deploy Frontend
+Run the following command to build the Angular application and deploy it to Firebase:
 ```bash
-npm run build
+npm run deploy
 ```
-The output will be in `dist/angular-sanity`.
+
+#### 2. Accessing Deployed Studio
+To access your Sanity Studio in the cloud (after deploying the studio):
+1. Run `npm run studio:deploy` from the project root.
+2. Once deployed, you can access it at your Sanity project URL (e.g., `https://[project-id].sanity.studio`).
+
+The frontend will be available at your Firebase Hosting URL (e.g., `https://[your-project].web.app`).
 
 ---
 
