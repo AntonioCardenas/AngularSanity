@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+
 import {SanityService} from '../../services/sanity.service';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {toHTML} from '@portabletext/to-html'
@@ -7,15 +7,21 @@ import {toHTML} from '@portabletext/to-html'
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent  implements OnInit{
   id: any;
   postDataContent: any;
-  constructor(private sanityService: SanityService,   private route: ActivatedRoute,) {
+  isConfigured: boolean;
+  constructor(
+    public sanityService: SanityService, 
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) {
     this.id = this.route.snapshot.params['id'];
+    this.isConfigured = this.sanityService.isConfigured;
   }
   postData: any
 
@@ -35,6 +41,7 @@ export class PostComponent  implements OnInit{
   async getPost(id:string) {
     this.postData = await this.sanityService.getSpecificPost(id);
     this.postDataContent = toHTML(this.postData.content);
+    this.cdr.detectChanges();
     return this.postData;
   }
 

@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 export default defineConfig({
   name: 'default',
   title: 'AngularSanity',
-  projectId: '',
+  projectId: '81pocpw8',
   dataset: 'production',
   apiVersion: '2021-10-21',
   plugins: [visionTool()],

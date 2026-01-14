@@ -1,39 +1,77 @@
-
-
 <div class="w-full p-12 z-10">
-    <div class="mt-16 mb-10 flex flex-col items-center md:mb-12 md:flex-row md:justify-between"><h1
-      class="mb-4 text-4xl font-bold text-9xl text-gray-800">Blog.</h1>
-      <h4 class="mt-5 text-center text-lg md:pl-8 md:text-left BlogHeader_portableText__JCSyj"><p>Articles from  <a href="https://sanity.io/" class="hover:text-sky-500 underline" target="_blank">Sanity</a> using <a  class="hover:text-red-500 underline" href="https://angular.io" target="_blank">Angular</a></p></h4>
-    </div>
+  <div class="mt-16 mb-10 flex flex-col items-center md:mb-12 md:flex-row md:justify-between">
+    <h1 class="mb-4 text-4xl font-bold text-9xl text-gray-800">Blog.</h1>
+    <h4 class="mt-5 text-center text-lg md:pl-8 md:text-left BlogHeader_portableText__JCSyj">
+      <p>Articles from <a href="https://sanity.io/" class="hover:text-sky-500 underline" target="_blank">Sanity</a>
+        using <a class="hover:text-red-500 underline" href="https://angular.io" target="_blank">Angular</a></p>
+    </h4>
+  </div>
+  @if (isConfigured) {
   <div class="p-5 mx-auto bg-black text-gray-100 rounded-lg">
     <div class="grid grid-cols-1 gap-5 lg:grid-cols-4 sm:grid-cols-2">
-      <div *ngFor="let post of posts">
-        <div class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 bg-gray-500 rounded-lg"  style.background-image="url('{{ imageUrl(post.coverImage)}}')" [routerLink]="['/post/'+post.slug]">
-          <div class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b via-transparent from-gray-500 to-gray-900  rounded-lg"></div>
+      @for (post of posts; track post._id) {
+      <div>
+        <div
+          class="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 bg-gray-500 rounded-lg"
+          style.background-image="url('{{ imageUrl(post.coverImage)}}')" [routerLink]="['/post/'+post.slug]">
+          <div
+            class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b via-transparent from-gray-500 to-gray-900  rounded-lg">
+          </div>
           <div class="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
-            <a rel="noopener noreferrer" href="#" class="px-3 py-2 text-xs font-semibold tracking-wider uppercase text-gray-100 tracking-wider uppercase text-gray-100 bg-black">{{ post.category }}</a>
+            <a rel="noopener noreferrer" href="#"
+              class="px-3 py-2 text-xs font-semibold tracking-wider uppercase text-gray-100 tracking-wider uppercase text-gray-100 bg-black">{{
+              post.category }}</a>
             <div class="flex flex-col justify-start text-center text-gray-100">
               <span class="text-3xl font-semibold leading-none tracking-wide">{{post.date | date: 'd'}}</span>
               <span class="leading-none uppercase">{{post.date | date: 'MMM'}}</span>
             </div>
           </div>
           <h2 class="z-10 p-5">
-            <a rel="noopener noreferrer" href="#" class="font-medium text-md hover:underline text-gray-100"> {{ post.title }}</a>
+            <a rel="noopener noreferrer" href="#" class="font-medium text-md hover:underline text-gray-100"> {{
+              post.title }}</a>
             <p class="font-light text-gray-400 text-gray-300 text-md">
               {{ post.excerpt }}
             </p>
             <div class="flex text-sm">
-            <p>By: </p>
+              <p>By: </p>
               <p class="text-gray-800 text-white">
-                 {{ post.author.name }}
+                {{ post.author.name }}
               </p>
             </div>
           </h2>
-
         </div>
       </div>
+      } @empty {
+      @for (i of [1,2,3,4]; track i) {
+      <div
+        class="animate-pulse flex flex-col items-center justify-center w-full h-96 bg-gray-800 rounded-lg border border-gray-700">
+        <div class="w-16 h-16 bg-gray-700 rounded-full mb-4"></div>
+        <div class="w-3/4 h-4 bg-gray-700 rounded mb-2"></div>
+        <div class="w-1/2 h-4 bg-gray-700 rounded"></div>
+      </div>
+      }
+      }
     </div>
-
   </div>
-
-
+  } @else {
+  <div class="p-12 mt-12 bg-red-900/20 border-2 border-red-500 rounded-2xl backdrop-blur-md">
+    <div class="flex flex-col items-center text-center">
+      <div class="p-4 bg-red-500 rounded-full mb-6 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <h2 class="text-4xl font-black text-white mb-4">Configuration Required</h2>
+      <p class="text-xl text-red-200 max-w-lg mb-8">
+        The <code class="bg-red-950 px-2 py-1 rounded">projectId</code> is missing from your environment configuration.
+        Please update <code class="bg-red-950 px-2 py-1 rounded">src/environments/environment.ts</code> to continue.
+      </p>
+      <a href="https://www.sanity.io/manage" target="_blank"
+        class="px-8 py-4 bg-white text-red-900 font-bold rounded-xl hover:bg-red-50 transition-all transform hover:scale-105 shadow-xl">
+        Get your Project ID
+      </a>
+    </div>
+  </div>
+  }
